@@ -1,0 +1,5 @@
+web: gunicorn --log-file=- backend:app
+dev: gunicorn --log-file=/tmp/error.log --log-level=DEBUG backend:app
+init: python db_create.py
+populate: python createSample.py
+upgrade: python db_upgrade.py
