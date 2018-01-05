@@ -1,0 +1,274 @@
+<!-- TODO: use angular validation -->
+
+<ul class="list-group">
+      <li class="list-group-item active">
+         <h4 class="list-group-item-heading">
+            Owner's Panel
+         </h4>
+      </li>
+      <li class="list-group-item list-group-item-danger"
+          ng-show="owner.dropOffItems.items.length">
+         <h4 class="list-group-item list-group-item-info">
+            {{owner.dropOffItems.description}}
+         </h4>
+        <div class="list-group">
+            <div class="list-group-item"
+                 ng-repeat="item in owner.dropOffItems.items">
+              <div class="row">
+                 <image ng-src="{{item.pic}}"
+                        class="col-sm-3 myAccount-image">
+                 <ul class="row col-sm-6 list-unstyled">
+                   <li>
+                     <a href="#/itemDetail?id={{item.id}}"
+                        class="list-group-item-heading" >
+                       <h4>{{item.name}}</h4>
+                     </a>
+                   </li>
+                   <li>
+                     <p class="list-group-item-text">
+                      Meet <b>{{item.rentee.username}}</b> on <b>{{item.meetupAt.time}}</b> at <b>{{item.meetupAt.location}}</b>
+                     </p>
+                   </li>
+                </ul>
+                 <!--<span class="pull-right col-sm-3">
+                     <button class="btn btn-default btn-info"
+                             ng-click="#">
+                       Contact Us
+                     </button>
+                   </span>-->
+              </div>
+            </div>
+         </div>
+     </li>
+     <li class="list-group-item list-group-item-success"
+         ng-show="owner.rentRequestItems.items.length"> 
+       <h4 class="list-group-item list-group-item-info">
+         {{owner.rentRequestItems.description}}
+       </h4>
+       <div class="list-group">
+         <div class="list-group-item"
+              ng-repeat="item in owner.rentRequestItems.items">
+           <div class="row">
+             <image ng-src="{{item.pic}}"
+                    class="col-sm-3 myAccount-image">
+               <ul class="row col-sm-6 list-unstyled">
+                 <li>
+                   <a href="#/itemDetail?id={{item.id}}"
+                      class="list-group-item-heading" >
+                     <h4>{{item.name}}</h4>
+                   </a>
+                 </li>
+                 <li>
+                   <p class="list-group-item-text">
+                     <b>${{item.cost}}</b> for <b>{{item.duration}} days</b> requested by <b>{{item.rentee.username}}</b>
+                   </p>
+                   <p class="list-group-item-text"
+                      ng-show="item.suggestedMeetup">
+                      <i>Pending meetup schedule 
+                         at <b>{{item.suggestedMeetup.location}}</b>
+                         between <b>{{item.suggestedMeetup.from}}</b>
+                           and <b>{{item.suggestedMeetup.to}}</b>
+                     </i>
+                   </p>
+                 </li>
+               </ul>
+               <span class="pull-right col-sm-3">
+                 <button class="btn btn-default btn-info"
+                         ng-click="suggestExchangeTimeAndLocation({{item.id}})"
+                         ng-show="item.suggestedMeetup==null">
+                   Suggest Exchange <br/>Time &amp; Location
+                 </button>
+               </span>
+             </div>
+           </div>
+         </div>
+     </li>
+     <li class="list-group-item list-group-item-success"
+         ng-show="owner.rentedItems.items.length">
+         <h4 class="list-group-item list-group-item-info">
+            {{owner.rentedItems.description}}
+         </h4>
+        <div class="list-group">
+            <div class="list-group-item"
+                 ng-repeat="item in owner.rentedItems.items">
+              <div class="row">
+                 <image ng-src="{{item.pic}}"
+                        class="col-sm-3 myAccount-image">
+                 <ul class="row col-sm-6 list-unstyled">
+                   <li>
+                     <a href="#" class="list-group-item-heading" >
+                       <h4>{{item.name}}</h4>
+                     </a>
+                   </li>
+                   <li>
+                     <p ng-show="item.returnRequested==false && item.meetupAt.return==false"
+                        class="list-group-item-text">
+                       In use by <b>{{item.rentee.username}}</b>
+                     </p>
+                     <p ng-show="item.returnRequested==true && item.meetupAt.return==false"
+                        class="list-group-item-text">
+                       <b>{{item.rentee.username}}</b> has requested a return
+                     </p>
+
+                     <p ng-show="item.meetupAt.return"
+                        class="list-group-item-text">
+                       Meet <b>{{item.rentee.username}}</b> on <b>{{item.meetupAt.time}}</b> at <b>{{item.meetupAt.location}}</b>
+                     </p>
+
+                     <p ng-show="item.suggestedReturn"
+                        class="list-group-item-text">
+                       Pending meetup schedule
+                        at <b>{{item.suggestedReturn.location}}</b>
+                        between <b>{{item.suggestedReturn.from}}</b>
+                          and <b>{{item.suggestedReturn.to}}</b>
+                     </p>
+
+                     <p>
+                       Return due on <b>{{item.dueDate}}</b>
+                     </p>
+
+                   </li>
+                </ul>
+                <span ng-show="item.returnRequested==true && item.meetupAt.return==false && item.suggestedReturn==null"
+                      class="pull-right col-sm-3">
+                  <button class="btn btn-default btn-info"
+                          ng-click="showReturnRequest({{item.id}})">
+                    Suggest Exchange <br/>Time &amp; Location
+                  </button>
+                </span>
+
+                 <span class="pull-right col-sm-3"
+                       ng-show="item.meetupAt.return">
+                   <button class="btn btn-default btn-info"
+                           ng-click="confirmItemReturn({{item.meetupAt.id}})">
+                     Confirm Return
+                   </button>
+                 </span>
+
+              </div>
+            </div>
+         </div>
+     </li>
+     <li class="list-group-item list-group-item-success"
+         ng-show="owner.idleItems.items.length">
+       <h4 class="list-group-item list-group-item-info"
+           ng-show='owner.idleItems.description.indexOf("Idle")!=-1'>
+         {{owner.idleItems.description}}
+       </h4>
+       <div class="list-group">
+         <div class="list-group-item"
+              ng-repeat="item in owner.idleItems.items">
+         <div class="row">
+           <image ng-src="{{item.pic}}"
+                  class="col-sm-3 myAccount-image">
+             <ul class="row col-sm-6 list-unstyled">
+               <li>
+                 <a href="#" class="list-group-item-heading" >
+                   <h4>{{item.name}}</h4>
+                 </a>
+               </li>
+               <li>
+                 <p class="list-group-item-text">
+                   Daily rate set at <b>${{item.daily_rate}}.00</b> per day
+                 </p>
+               </li>
+             </ul>
+             <span class="pull-right col-sm-3">
+               <!--<button class="btn btn-default btn-info"
+                       ng-click="alert('Try deleting and relisting for the time being.');">
+                 Edit
+               </button>-->
+               <button class="pull-right btn btn-default btn-warning"
+                       ng-click="deleteItem({{item.id}})">
+                 <span class="glyphicon glyphicon-trash"></span>
+               </button>
+             </span>
+           </div>
+         </div>
+       </div>
+     </li>
+</ul>
+
+<ul class="list-group">
+      <li class="list-group-item active">
+         <h4 class="list-group-item-heading">
+            Rentee's Panel
+         </h4>
+      </li>
+      <li class="list-group-item list-group-item-success"
+          ng-show="renteeObj.items.length"
+          ng-repeat="renteeObj in rentee">
+         <h4 class="list-group-item list-group-item-info">
+            {{renteeObj.description}}
+         </h4>
+         <div class="list-group">
+            <div class="list-group-item"
+                 ng-repeat="item in renteeObj.items">
+              <div class="row">
+                 <image ng-src="{{item.pic}}"
+                        class="col-sm-3 myAccount-image">
+                 <ul class="row col-sm-6 list-unstyled">
+                   <li><a href="#" class="list-group-item-heading" >
+                      <h4>{{item.name}}</h4>
+                   </a></li> 
+                   <li>
+			<p class="list-group-item-text" ng-show="item.time_of_request">
+				<small><i>Request initiated on {{item.time_of_request}}</i></small>
+			</p>
+
+			<p class="list-group-item-text" ng-show="item.dueDate">
+				Due date: <b>{{item.dueDate}}</b>
+			</p>
+		
+			<p class="list-group-item-text" ng-show="item.meetupAt && !item.meetupAt.length && item.pickup">
+				Pick up at <b>{{item.meetupAt.location}}</b> on <b>{{item.meetupAt.time}}</b>
+			</p>
+			<p class="list-group-item-text" ng-show="item.meetupAt && !item.meetupAt.length && item.dropoff">
+				Return on <b>{{item.meetupAt.time}}</b> at <b>{{item.meetupAt.location}}</b>
+			</p>
+
+			<p class="list-group-item-text">
+				Owner: <b>{{item.owner}}</b>
+			</p>
+			<p class="list-group-item-text" ng-show="item.duration">
+				Rent duration: <b>{{item.duration}} days</b>
+			<p class="list-group-item-text" ng-show="item.cost">
+				Cost: <b>${{item.cost}}.00</b>
+			</p>
+                    </li>
+                </ul>
+                <span class="pull-right col-sm-3">
+                   <button class="btn btn-default btn-info"
+                           ng-show='renteeObj.fieldType.indexOf("pendingApproval")!=-1'
+                           ng-click="confirmExchangeTimeAndLocation({{item.id}})">
+                     Schedule Pickup
+                   </button>
+                 </span>
+                 <span class="pull-right col-sm-3">
+                   <button class="btn btn-default btn-info"
+                           ng-show='renteeObj.fieldType.indexOf("pendingPickup")!=-1'
+                           ng-click="confirmItemPickup({{item.id}})">
+                     Confirm Picked Up
+                   </button>
+                 </span>
+                 <span class="pull-right col-sm-3">
+                   <button class="btn btn-default btn-info"
+                           ng-show='renteeObj.fieldType.indexOf("rentedActiveItems")!=-1'
+                           ng-click="requestItemReturn({{item.id}})">
+                     Request Return
+                   </button>
+                 </span>
+                 <span class="pull-right col-sm-3">
+                   <button class="btn btn-default btn-info"
+                           ng-show='renteeObj.fieldType.indexOf("proposedReturnTimeItems")!=-1'
+                           ng-click="scheduleReturnTimeAndLocation({{item.id}})">
+                     Schedule Return
+                   </button>
+                 </span>
+
+              </div>
+            </div>
+         </div>
+     </li>
+
+</ul>

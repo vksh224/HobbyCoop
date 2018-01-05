@@ -1,0 +1,28 @@
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" >Sign In</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Email Id:
+              <input ng-model="emailId" ng-model-options="{ updateOn: 'blur' }"
+                type="text" class="form-control" placeholder="Email" required />
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label>Password:
+              <input ng-model="password" ng-model-options="{ updateOn: 'blur' }"
+                type="password" class="form-control" placeholder="Password" required />
+            </label>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" ng-click="close('Yes')" class="btn btn-primary" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

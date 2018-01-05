@@ -1,0 +1,91 @@
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Suggest Return Time and Location</h4>
+        </div>
+        <div class="modal-body">
+          <h4> Suggest the Return Time and Location to the Rentee </h4>
+          <div class="row">
+              <div class='col-sm-4'>
+                  <label class="text-info">From </label>
+              </div>
+              <div class='col-sm-4'>
+                  <label class="text-info" >To </label>
+              </div>
+              <div class='col-sm-4'>
+                  <label class="text-info" >Meetup At </label>
+              </div>
+          </div>
+           <div class="date-available-row row">
+              <div class='col-sm-4'>
+                  <div class="form-group">
+                      <div class='input-group date' id='returnRequestFromDateTimepicker1' >
+                          <input type='text' class="form-control" ng-model="fromTime"/>
+                          <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+              <div class='col-sm-4'>
+                  <div class="form-group">
+                      <div class='input-group date' id='returnRequestToDateTimepicker1' >
+                          <input type='text' class="form-control" ng-model="toTime"/>
+                          <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+              <div class='col-sm-4'>
+                  <div class="form-group">
+                      <div class='input-group date' id='returnRequestMeetupAt1'>
+                            <input type="text" id="Autocomplete" class="form-control" ng-model="meetupAt" ng-autocomplete="location"/>
+                      </div>
+                  </div>
+              </div>
+          </div>
+       <!--  <div class="date-available-row row">
+              <div class='col-sm-4'>
+                  <div class="form-group">
+                      <div class='input-group date' id='returnRequestFromDateTimepicker2' >
+                          <input type='text' class="form-control" ng-model="fromTime2"/>
+                          <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+              <div class='col-sm-4'>
+                  <div class="form-group">
+                      <div class='input-group date' id='returnRequestToDateTimepicker2'>
+                          <input type='text' class="form-control" />
+                          <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+                <div class='col-sm-4'>
+                  <div class="form-group">
+                      <div class='input-group date' id='returnRequestMeetupAt1'>
+                            <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="user.location" details="details1" options="options1" />
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div> -->
+      <div class="modal-footer">
+        <button type="button" ng-click="close('No')" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" ng-click="suggestReturnTimeAndLocation();close('Yes')" class="btn btn-primary" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function () {
+        $('#returnRequestFromDateTimepicker1 , #returnRequestToDateTimepicker1, #returnRequestFromDateTimepicker2 , #returnRequestToDateTimepicker2').datetimepicker();
+    });
+</script>
+</div>

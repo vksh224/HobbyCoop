@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "title": "Category 1",
+    "code": "Code 1",
+    "items":
+	    [
+	      {
+	      		"id": "1",
+	        	"title":"item 1",
+	        	"description":"item 1 description"
+	     	}
+	    ]
+	},
+	{
+    "id": "2",
+    "title": "Category 2",
+    "code": "Code 1",
+    "items":
+	    [
+	        {
+	        	"id": "2",
+	        	"title":"item 2",
+	        	"description":"item 2 description"
+	     	}
+	    ]
+	}
+
+]

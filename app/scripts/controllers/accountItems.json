@@ -1,0 +1,94 @@
+{
+  "idleItems": {
+    "description": "Idle Items not rented or requested by anybody",
+    "1": {
+      "daily_rate": 500,
+      "name": "Power Drill",
+      "pic": "http://i.imgur.com/8GiKI3rm.jpg"
+    },
+    "6": {
+      "daily_rate": 200,
+      "name": "Circular saw",
+      "pic": "http://i.imgur.com/2fjTgav.jpg"
+    },
+  },
+
+  "itemDropOffs": {
+    "description": "Approved Transaction Awaiting Exchange from Owner to Rentee",
+    "2": {
+      "pic": "http://i.imgur.com/fg9XTrU.jpg",
+      "name": "Vaccuum Cleaner",
+      "meetupAt": {
+        "location": "Walmart parking lot",
+        "time": "Noon on Friday (let's use epoch seconds)",
+      },
+      "rentee": {
+        "username": "danielTwalkers",
+        "id": 5,
+      },
+    "7": {
+      "pic": "http://i.imgur.com/b8OkPFL.jpg",
+      "name": "Belt Sander",
+      "meetupAt": {
+        "location": "Kroger parking lot",
+        "time": "Noon on Sunday (let's use epoch seconds)",
+      },
+      "rentee": {
+        "username": "danielTwalkers",
+        "id": 5,
+      },
+    },
+  },
+
+  "rentRequests": {
+    "description": "Pending Rent Requests from Rentee to Owner",
+    "3": {
+      "pic": "http://i.imgur.com/2i1YOSO.jpg",
+      "name": "Workshop Vaccuum Cleaner",
+      "cost": 1200,
+      "duration": 2,
+      "rentee": {
+        "username": "derrick",
+        "id": 9,
+      },
+    },
+  "7": {
+      "pic": "http://i.imgur.com/x7KOqv2.jpg",
+      "name": "Four Person Tent",
+      "cost": 4000,
+      "duration": 3,
+      "rentee": {
+        "username": "danielTwalkers",
+        "id": 5,
+      },
+    },
+  },
+
+  "rentedItems": {
+    "description": "Items Actively Rented by Rentees",
+    "4": {
+      "pic": "http://i.imgur.com/qkUH33c.jpg",
+      "name": "Sit on top Kayak",
+      "meetupAt": {
+        "location": "McDonald's parking log",
+        "time": "Noon on Wednesday",
+      },
+      "rentee": {
+        "username": "vijay",
+        "id": 12,
+      },
+      "returnRequested": true,
+      "dueDate": "Noon on Friday (let's use epoch seconds)",
+    },
+    "5": {
+      "pic": "http://i.imgur.com/NOudZ1O.jpg",
+      "name": "Heavy Equipment Dolly",
+      "rentee": {
+        "username": "donald",
+        "id": 15,
+      },
+      "returnRequested": false,
+      "dueDate": "Noon on Monday (let's use epoch seconds)",
+    },
+  }
+}

@@ -1,0 +1,51 @@
+<!-- TODO: use angular validation -->
+
+<ul class="list-group" ng-repeat="category in searchResults">
+      <li class="list-group-item active">
+         <h4 class="list-group-item-heading" >
+            {{category.name}}
+         </h4>
+      </li>
+      <li class="list-group-item list-group-item-success text-center"
+          ng-show="user_id!=-1">
+        Do you own this item?
+        <button class="btn btn-default btn-info"
+                ng-click="listItem({{category.id}}, {{user_id}})">
+          List it!
+        </button>
+      </li>
+      <li class="list-group-item list-group-item-info">
+        <div class="list-group">
+          <div class="list-group-item " ng-repeat="item in category.items">
+            <div class="row">
+              <image ng-src="{{item.image_url}}" class="col-sm-3 searchResult-image"></image>
+              <ul class="row col-sm-6 list-unstyled">
+                <li>
+                  <a href="#" class="list-group-item-heading">
+                    <h4>{{item.name}}</h4>
+                  </a>
+                </li> 
+                <li>
+                  <p class="list-group-item-text">
+                    ${{item.daily_rate}} per day from <b>{{item.owner.username}}</b>
+                    (located in {{item.owner.location}})
+                  </p>
+                </li>
+
+              </ul>
+              <span class="pull-right col-sm-2">
+                <button class="btn btn-default btn-info"
+                        ng-click="requestItem({{item.id}}, {{item.daily_rate}}, {{user_id}})">
+                  Request
+                </button>
+              </span>
+            </div>
+          </div>
+          <span ng-show="!searchResults.length">
+            No Items Available for Rent!
+          </span>
+       </div>
+     </li>
+</ul>
+
+

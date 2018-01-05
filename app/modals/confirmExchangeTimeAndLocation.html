@@ -1,0 +1,87 @@
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" >Confirm Exchange Time and Location</h4>
+        </div>
+        <div class="modal-body">
+          <h4> Confirm exchange time and location suggested by the Owner. <br/>
+          Note: Please choose a time which lies in between the suggested time period. </h4>
+          <div class="row">
+              <!-- <div class='col-sm-1'>
+                  <label class="text-info"></label>
+              </div> -->
+              <div class='col-sm-2'>
+                  <label class="text-info">From </label>
+              </div>
+              <div class='col-sm-2'>
+                  <label class="text-info">To </label>
+              </div>
+              <div class='col-sm-4'>
+                  <label class="text-info">Meetup At </label>
+              </div>
+              <div class='col-sm-4'>
+                  <label class="text-info">Choose a time </label>
+              </div>
+          </div>
+           <div class="date-available-row row">
+               <!-- <div class='col-sm-1'>
+                  <input type="radio" name="optradio" class="text-info"> </label>
+              </div> -->
+              <div class='col-sm-2'>
+                  <label> 09/14/2015 11:27 AM </label>
+              </div>
+              <div class='col-sm-2'>
+                  <label> 09/15/2015 11:27 AM </label>
+              </div>
+              <div class='col-sm-4'>
+                  <label id="meetupAt"> Drury Inn Rolla, North Bishop Avenue, Rolla, MO, United States </label>
+              </div>
+              <div class='col-sm-4'>
+                  <div class="form-group">
+                      <div class='input-group date' id='pickDateTimePicker1'>
+                          <input type='text' class="form-control" />
+                          <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+         <!-- <div class="date-available-row row">
+               <div class='col-sm-1'>
+                  <input type="radio" name="optradio" class="text-info"> </label>
+              </div>
+              <div class='col-sm-2'>
+                  <label> 09/14/2015 11:27 AM </label>
+              </div>
+              <div class='col-sm-2'>
+                  <label> 09/15/2015 11:27 AM </label>
+              </div>
+              <div class='col-sm-4'>
+                  <label> Drury Inn Rolla, North Bishop Avenue, Rolla, MO, United States </label>
+              </div>
+              <div class='col-sm-3'>
+                  <div class="form-group">
+                      <div class='input-group date' id='pickDateTimePicker2'>
+                          <input type='text' class="form-control" />
+                          <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+      <div class="modal-footer">
+        <button type="button" ng-click="close('No')" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" ng-click="confirmExchangeTimeAndLocation();close('Yes')" class="btn btn-primary" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    $(function () {
+        $('#pickDateTimePicker1, #pickDateTimePicker2').datetimepicker();
+    });
+</script>
+</div>

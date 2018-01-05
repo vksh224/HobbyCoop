@@ -1,0 +1,51 @@
+<!-- TODO: use angular validation -->
+
+<h3 ng-show="error">Error during account creation</h3>
+
+<form name="registrationForm" ng-submit="submit(registrationForm.$valid)">
+  <div class="form-group">
+    <label>First Name
+      <input ng-model="user.firstName" ng-model-options="{ updateOn: 'blur' }"
+        type="text" class="form-control" placeholder="First Name" required />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>Last Name
+      <input ng-model="user.lastName" ng-model-options="{ updateOn: 'blur' }"
+        type="text" class="form-control" placeholder="Last Name" required />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>Email
+      <input ng-model="user.email" ng-model-options="{ updateOn: 'blur' }"
+        type="email" class="form-control" placeholder="Email" required />
+    </label>
+  </div>
+
+  <div class='form-group'>
+    <label>Location
+      <input type="text" id="Autocomplete" class="form-control" ng-autocomplete details="locationDetails" options="options1" />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>Password
+      <input ng-model="user.password" ng-model-options="{ updateOn: 'blur' }"
+        type="password" class="form-control" placeholder="Password" required />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>Password Verification
+      <input name="confirmPassword" ng-model="confirmPassword" ng-model-options="{ updateOn: 'blur' }"
+        type="password" class="form-control" placeholder="Re-enter password" compare-to="user.password" required />
+    </label>
+  </div>
+
+  <!-- TODO: REPLACE this with ng-message -->
+  <p ng-show="registrationForm.confirmPassword.$error.compareTo">Passwords must match</p>
+
+  <input type="submit" value="Create Account"/>
+</form>

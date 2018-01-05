@@ -1,0 +1,35 @@
+<!-- TODO: use angular validation -->
+<form name="registrationForm" ng-submit="submit(registrationForm.$valid)">
+  <div class="form-group">
+    <label>Item Title
+      <input ng-model="item.title" ng-model-options="{ updateOn: 'blur' }"
+        type="text" class="form-control" placeholder="Item Title" required />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>Item Rent Price per Hour
+      <input ng-model="item.Price" ng-model-options="{ updateOn: 'blur' }"
+        type="text" class="form-control" placeholder="Item Rent Price" required />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>Item Details (Optional)
+      <textarea ng-model="item.details" ng-model-options="{ updateOn: 'blur' }"
+        class="form-control" placeholder="Details" required> </textarea>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label>Upload Item Photo
+	    <input type="file" file-model="myFile"/>
+	    <button ng-click="uploadFile()">upload me</button>
+    </label>
+  </div>
+
+
+  <label>Rent An Item
+    <input type="submit" />
+  </label>
+</form>
